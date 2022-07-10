@@ -1,4 +1,10 @@
-function HomePage() {
-	return <h1>Home Page</h1>
+
+import Navbar from "../components/Navbar";
+export default function Layout({ children }) {
+    return (
+        <>
+            <Navbar />
+            <main>{children}</main>
+        </>
+    )
 }
-export default HomePage
