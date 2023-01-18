@@ -1,10 +1,23 @@
 
-import Navbar from "../components/Navbar";
-export default function Layout({ children }) {
+import Navbar from "../components/Layout";
+import Names from "../components/Names";
+import Daily from "../components/Daily";
+import Box from "../components/Box";
+
+function Layout({ children }) {
+
     return (
         <>
             <Navbar />
-            <main>{children}</main>
+            <main className="container">
+                {children}
+                <div className="component__content">
+                    <Names></Names>
+                    <Daily></Daily>
+                    {/* <Box></Box> */}
+                </div>
+            </main>
         </>
     )
 }
+export default Layout;

@@ -42,4 +42,4 @@ function RegisterPage() {
 		</div >
 	)
 }
-export default RegisterPage;
+export default RegisterPage;  

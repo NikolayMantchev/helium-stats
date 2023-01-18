@@ -4,10 +4,11 @@ import { IoHome } from "react-icons/io5";
 function LoginPage() {
 
 
+
 	return (
 		<div className="container">
 			<div className="comp__cont">
-				<div className=" align-c">
+				<form className=" align-c">
 
 					<p className="title" >Login</p>
 					<div className="form">
@@ -30,10 +31,12 @@ function LoginPage() {
 					<div className="title">
 						<p>Don't have Account <Link href={"register"}>Register</Link></p>
 					</div>
-				</div >
-				<div className="icon__home">
-					<Link href={"/"}><IoHome /></Link>
-				</div>
+				</form >
+				<Link href={"/"}>
+					<div className="icon__home">
+						<IoHome />
+					</div>
+				</Link>
 			</div>
 		</div>
 

@@ -1,5 +1,13 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap"); */
 
+a:-webkit-any-link {
+    text-decoration: none;
+    color: var(--greyDark-1);
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
+    align-items: center;
+}
 :root {
     --primary-light: #8abdff;
     --primary: #6d5dfc;
@@ -9,6 +17,7 @@
     --greyLight-2: #c8d0e7;
     --greyLight-3: #bec8e4;
     --greyDark: #7f8cac;
+    --greyDark-1: #747f9d;
 }
 *,
 *::before,
@@ -16,6 +25,14 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+}
+:link {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
 }
 html {
     box-sizing: border-box;
@@ -28,9 +45,13 @@ html {
         font-size: 75%;
     }
 }
-@media screen and (max-width: 610px) {
-    .navbar__content {
+@media screen and (max-width: 620px) {
+    .navbar {
         font-size: 65%;
+    }
+    .navbar__content {
+        display: block;
+        justify-content: flex-end;
     }
 }
 .navbar {
@@ -44,8 +65,12 @@ html {
 .navbar__content {
     display: flex;
     justify-content: flex-end;
+    font-family: "Poppins", sans-serif;
 }
-
+.a {
+    color: var(--greyDark);
+    margin: 2rem;
+}
 .nav_tile {
     right: 0;
     position: absolute;
@@ -58,20 +83,43 @@ html {
     font-family: "Poppins", sans-serif;
     background: var(--greyLight-1);
 }
-.components {
-    width: 75rem;
-    height: 85rem;
-    border-radius: 3rem;
+.component__content {
+    width: 95rem;
+    /* height: 85rem; */
+    border-radius: 1rem;
     box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2),
         -0.2rem -0.2rem 1.8rem var(--white);
-    padding: 4rem;
+    padding: 3rem;
+    margin: 3rem;
     display: block;
-    grid-template-columns: 17.6rem 19rem 20.4rem;
-    grid-template-rows: repeat(autofit, min-content);
+    /* grid-template-columns: 17.6rem 19rem 20.4rem; */
+    /* grid-template-rows: repeat(autofit, min-content); */
     grid-column-gap: 5rem;
     grid-row-gap: 2.5rem;
     align-items: center;
+    justify-content: center;
 }
+.card {
+    /* width: 25rem; */
+    /* height: 10rem; */
+    border-radius: 1rem;
+    box-shadow: 0.4rem 0.4rem 1.4rem var(--greyLight-2),
+        -0.2rem -0.2rem 1.8rem var(--white);
+    padding: 1.5rem;
+    margin: 1.5rem;
+    /* grid-template-columns: 17.6rem 19rem 20.4rem; */
+    /* grid-template-rows: repeat(autofit, min-content); */
+    /* grid-column-gap: 5rem;
+    grid-row-gap: 2.5rem; */
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    list-style-type: none;
+}
+.content__grid {
+    display: inline-block;
+}
+
 /* SWITCH */
 .switch {
     grid-column: 0.5;
@@ -136,7 +184,7 @@ html {
 
 /* BUTTONS */
 .btn {
-    width: 15rem;
+    width: 10rem;
     height: 4rem;
     margin: 12px;
     border-radius: 1rem;
@@ -148,6 +196,7 @@ html {
     justify-content: center;
     cursor: pointer;
     transition: 0.3s ease;
+    text-decoration: none;
 }
 .btn__primary {
     background: var(--primary);
@@ -156,6 +205,7 @@ html {
         0.3rem 0.3rem 0.6rem var(--greyLight-2),
         -0.2rem -0.2rem 0.5rem var(--white);
     color: var(--greyLight-1);
+    text-decoration: none;
 }
 .btn__primary:hover {
     color: var(--white);
@@ -169,6 +219,7 @@ html {
     grid-row: 0.8333333333;
     color: var(--greyDark);
     text-decoration: none;
+    font-size: 1.6rem;
 }
 .btn__secondary:link {
     color: var(--primary);
@@ -187,7 +238,10 @@ html {
     font-size: 1.6rem;
     text-decoration: none;
 }
-
+.error_message {
+    color: var(--primary);
+    font-size: 1.8rem;
+}
 /* CHIP */
 .chip {
     grid-column: 0.6666666667;
@@ -298,7 +352,7 @@ html {
 /* FORM */
 .comp__cont {
     /* width: 75rem; */
-    height: 40rem;
+    height: 45rem;
     border-radius: 3rem;
     box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2),
         -0.2rem -0.2rem 1.8rem var(--white);
@@ -317,11 +371,15 @@ html {
 }
 .title {
     display: flex;
-    margin: 1rem;
+    /* margin: 1rem; */
     color: var(--greyDark);
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     justify-content: center;
     align-items: center;
+}
+.title p {
+    font-size: 1.6rem;
+    margin: 1rem;
 }
 .align-c {
     display: flex;
