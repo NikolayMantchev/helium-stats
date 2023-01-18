@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { IoHome } from "react-icons/io5";
+import { Card } from "./Names"
 
 function Layout() {
 
@@ -21,19 +22,22 @@ function Layout() {
                                 <ion-icon name="search"></ion-icon>
                             </div>
                         </div>
-                        <div className="btn btn__secondary">
-                            <p><Link href={"login"}>Login</Link></p>
-                        </div>
-                        <div className="btn btn__secondary">
-                            <p><Link href={"register"}>Register</Link></p>
-                        </div>
+                        <Link href={"login"}>
+                            <div className="btn btn__secondary">
+
+                                Login
+                            </div>
+                        </Link>
+                        <Link href={"register"}>
+                            <div className="btn btn__secondary">
+                                Register
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </nav>
 
-            {/* <div className="container">
-                <div className="components"></div>
-            </div> */}
+
         </>
     )
 }
