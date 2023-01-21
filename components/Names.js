@@ -9,8 +9,6 @@ const walletAddress = "14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB"
 const hotspotsString = `hotspots`
 const account = `accounts`
 const wallet = `${apiUrl}/${account}/${walletAddress}/${hotspotsString}`
-const rewards = `rewards`
-const daily = `sum?min_time=-1%20day`
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -20,27 +18,27 @@ function Names() {
 	const { data, error } = useSWR(`${wallet}`, fetcher)
 
 	useEffect(() => {
+		setLoading(true);
 		const transformedData = [];
 		for (const key in data) {
 			transformedData.push(data[key]);
 			const myHotspots = transformedData.flat(1)
 			setHotspots(myHotspots)
 		}
+		setLoading(false);
 	}, [data])
 
-	const res = hotspotAddressesString.map(spot =>
-		useSpot(spot.address)
-	)
-
-	if (isLoading) return <p>Loading...</p>
+	if (isLoading) return <p>Loading Names...</p>
 	if (!hotspots) return <p>No hotspots data</p>
-	// if (!stat) return <p>No stat data</p>
-	if (error) return <p className="error_message">Oh No... `${error.message}`</p>
+	if (error) return <p className="error_message">Loading...</p>
 	return (
 		<div className="content__grid">
 			{hotspots.map(hotspot => (
 				<div className="card" key={hotspot.address}>
 					<h2 className="title ">{hotspot.name}</h2>
+					{hotspot.status.online === "online" ? <p className="align-right online">{hotspot.status.online}</p> : <p className="align-right offline">{hotspot.status.online}</p>}
+					{/* <p className="title align-right">{hotspot.status.online}</p> */}
+
 				</div>
 			))}
 		</div >

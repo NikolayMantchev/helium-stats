@@ -1,4 +1,5 @@
-import useSWR from 'swr'
+
+import { useEffect } from 'react';
 const apiUrl = `https://api.helium.io/v1`
 const walletAddress = "14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB"
 const hotspotsString = `hotspots`
