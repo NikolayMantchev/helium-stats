@@ -406,16 +406,16 @@ html {
     display: flex;
     /* margin: 1rem; */
     color: var(--greyDark);
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     justify-content: center;
     align-items: center;
 }
 .title p {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin: 1rem;
 }
 .align-right {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     padding-left: inherit;
     align-items: center;
     justify-content: center;
@@ -425,7 +425,6 @@ ul {
 }
 .align-c {
     display: flex;
-
     display: block;
     align-items: center;
     justify-content: center;

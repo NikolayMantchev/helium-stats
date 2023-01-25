@@ -12,9 +12,11 @@ function Layout({ children }) {
             <main className="container">
                 {children}
                 <div className="component__content">
-
                     <Names></Names>
                     <Daily></Daily>
+                </div>
+                <div className="component__content">
+
                     <Balance></Balance>
                 </div>
             </main>

@@ -30,7 +30,8 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 function Daily() {
     const [daily, setDaily] = useState([]);
     const lastDay = hotspotAddressesString.map((spot) => {
-        const { data, error, isLoading } = useSWR(`https://api.helium.io/v1/hotspots/${spot.address}/rewards/sum?min_time=-1%20day`, fetcher, { keepPreviousData: true, });
+        const { data, error, isLoading } = useSWR(`https://api.helium.io/v1/hotspots/${spot.address}/rewards/sum?min_time=-1%20day`, fetcher, { keepPreviousData: true, refreshInterval: 50000 });
+
         return {
             statHotspot: data,
             isLoading,
@@ -38,19 +39,21 @@ function Daily() {
             address: spot.address,
         };
     })
-    useEffect(() => {
+
+    useMemo(() => {
         setDaily(lastDay);
+
     }, []);
-    console.log(daily);
-    // console.log(daily);
-    // if (daily.isLoading) return <p className="title">{" "}{data.isLoading ? "Loading" : null}{" "}</p>
+    if (daily.isLoading) return <p className="title">{data.isLoading ? "Loading" : null}</p>
+
     return (
-        // <div></div>
         <div className="content__grid">
             {daily.map((data) => (
                 <div className="card" key={data.address}>
                     <h2 className="title">
-                        {data ? data.statHotspot?.data?.total : null}
+                        {data
+                            ? data.statHotspot?.data?.total.toFixed(3)
+                            : null}
                     </h2>
                 </div>
             ))}

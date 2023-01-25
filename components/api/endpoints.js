@@ -1,5 +1,4 @@
 
-import { useEffect } from 'react';
 const apiUrl = `https://api.helium.io/v1`
 const walletAddress = "14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB"
 const hotspotsString = `hotspots`
@@ -7,7 +6,7 @@ const account = `accounts`
 const wallet = `${apiUrl}/${account}/${walletAddress}/${hotspotsString}`
 const rewards = `rewards`
 const daily = `sum?min_time=-1%20day`
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
+// const fetcher = (...args) => fetch(...args).then((res) => res.json())
 const hotspotAddressesString = Array.from([{ address: "112BVMQ98JL3WDEzReiBfQ25cq1EpozEoZ1CWFPUEPJ2dNPQMV73" },
 { address: "1126DScbFyoQRf78RArnLnTR297ANmrqo9vWgCSSmdfCrC5kh7VS" },
 { address: "11gvbTzyaQ6hSQyVfzS3w9iYoFx8hyZaXhiqeEibYzy7MAEHheD" },
@@ -33,47 +32,39 @@ const hotspotAddressesString = Array.from([{ address: "112BVMQ98JL3WDEzReiBfQ25c
 const hotspotAddresses = Array.from(hotspotAddressesString)
 
 
-const getHotspots = () => {
+const getHotspots = (walletAddress) => {
 	try {
 		const transformedData = [];
 		const myHotspots = []
 		const res = async () => {
-			const body = await fetch(url, { method: "GET" });
+			const body = await fetch(`https://api.helium.io/v1/accounts/${walletAddress}/hotspots`, { method: "GET" });
 			const data = await body.json()
-			// console.log(`${JSON.stringify(data)} 										data >44>`)
 			for (const key in data) {
 				transformedData.push(data[key])
 			}
 			myHotspots = transformedData.flat(1)
-			// console.log(`${myHotspots}    			myHotspots`);
+
 			return myHotspots
 		};
+		// console.log(`${res}    			res`);
 		return res
 	} catch (error) {
 		console.log(error.message);
 	}
 
 }
+const getCurentPrice = () => {
+	try {
+		const res = async () => {
+			const body = await fetch(`https://api.helium.io/v1/oracle/prices/current`, { method: "GET" });
+			const data = await body.json();
+			return data;
+		}
+		return res
+	} catch (error) {
+		console.log(error.message);
+	}
+}
 
-const get = (path, params) =>
-	api(path, {
-		...params,
-		method: "GET",
-	});
 
-const apiMethod = (method) => (path, params = {}, token) =>
-	api(path, {
-		...params,
-		method: method,
-		headers: {
-			Accept: "application/json",
-			"Content-Type": "application/json",
-			Authorization: `Bearer ${token}`,
-		},
-	});
-
-const post = apiMethod("POST");
-const put = apiMethod("PUT");
-const del = apiMethod("DELETE");
-
-export { get, post, put, del, getHotspots, hotspotAddressesString, hotspotAddresses };
+export { getHotspots, hotspotAddressesString, hotspotAddresses, getCurentPrice };

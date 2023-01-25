@@ -1,7 +1,5 @@
 
 import { useEffect, useMemo, useState, useCallback } from "react";
-import { getHotspots, hotspotAddressesString, useSpot } from "./api/endpoints"
-
 import useSWR from 'swr'
 
 const apiUrl = `https://api.helium.io/v1`
@@ -15,9 +13,9 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 function Names() {
 	const [hotspots, setHotspots] = useState([]);
 	const [isLoading, setLoading] = useState(false);
-	const { data, error } = useSWR(`${wallet}`, fetcher)
+	const { data, error } = useSWR(`${wallet}`, fetcher, { keepPreviousData: true, refreshInterval: 5000 })
 
-	useEffect(() => {
+	useMemo(() => {
 		setLoading(true);
 		const transformedData = [];
 		for (const key in data) {
@@ -30,14 +28,17 @@ function Names() {
 
 	if (isLoading) return <p>Loading Names...</p>
 	if (!hotspots) return <p>No hotspots data</p>
-	if (error) return <p className="error_message">Loading...</p>
+	// if (error) return <p className="error_message">Loading...</p>
 	return (
+		// <div></div>
 		<div className="content__grid">
 			{hotspots.map(hotspot => (
 				<div className="card" key={hotspot.address}>
 					<h2 className="title ">{hotspot.name}</h2>
-					{hotspot.status.online === "online" ? <p className="align-right online">{hotspot.status.online}</p> : <p className="align-right offline">{hotspot.status.online}</p>}
-					{/* <p className="title align-right">{hotspot.status.online}</p> */}
+					{hotspot.status.online === "online"
+						? <p className="align-right online">{hotspot.status.online} {onclick}</p>
+						: <p className="align-right offline">{hotspot.status.online}</p>}
+					<p className="title align-right ">{hotspot.geocode.short_city}</p>
 
 				</div>
 			))}
