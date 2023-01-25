@@ -7,7 +7,7 @@ export async function getStaticProps() {
 			console.log(JSON.stringify(data), 'back end');
 			return {
 				props: {
-					price: data.market_data.current_price
+					price: data.market_data.current_price.usd
 				},
 			}
 		}

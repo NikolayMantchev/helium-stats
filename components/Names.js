@@ -12,8 +12,8 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 function Names() {
 	const [hotspots, setHotspots] = useState([]);
-	const [isLoading, setLoading] = useState(false);
 	const { data, error } = useSWR(`${wallet}`, fetcher, { keepPreviousData: true, refreshInterval: 5000 })
+	const [isLoading, setLoading] = useState(false);
 
 	useMemo(() => {
 		setLoading(true);
@@ -28,7 +28,7 @@ function Names() {
 
 	if (isLoading) return <p>Loading Names...</p>
 	if (!hotspots) return <p>No hotspots data</p>
-	// if (error) return <p className="error_message">Loading...</p>
+	if (error) return <p className="error_message">Loading...</p>
 	return (
 		// <div></div>
 		<div className="content__grid">

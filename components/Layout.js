@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { IoHome } from "react-icons/io5";
-import { Card } from "./Names"
 
 function Layout() {
 
