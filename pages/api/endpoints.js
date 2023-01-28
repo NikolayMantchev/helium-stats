@@ -1,17 +1,27 @@
+const address = '14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB'
 
-export async function getStaticProps() {
+export async function getStaticProps(address) {
 	try {
-		async () => {
-			const body = await fetch(`https://api.coingecko.com/api/v3/coins/helium?community_data=false&developer_data=false&sparkline=true`, { method: "GET" });
-			const data = await body.json();
-			console.log(JSON.stringify(data), 'back end');
+		const transformedData = [];
+		const myHotspots = []
+		const res = async () => {
+			const body = await fetch(`https://api.helium.io/v1/accounts/${address}/hotspots`, { method: "GET" });
+			const hotspots = await body.json();
+			// console.log(JSON.stringify(data), 'back end');
+			for (const key in hotspots) {
+				transformedData.push(hotspots[key])
+			}
+			myHotspots = transformedData.flat(1)
 			return {
 				props: {
-					price: data.market_data.current_price.usd
+					wallet: myHotspots
 				},
+				revalidate: 600,
+				fallback: false
 			}
 		}
-		return curPrice
+		return res
+
 	} catch (error) {
 		console.log(error.message);
 	}

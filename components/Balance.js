@@ -13,7 +13,7 @@ function Balance() {
 
 	useEffect(() => {
 		if (data) {
-			console.log(data);
+			// console.log(data);
 			const tempTotal = data?.data.balance / 100000000
 			setTotal(tempTotal.toFixed(2))
 		}

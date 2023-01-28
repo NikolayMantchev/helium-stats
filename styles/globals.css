@@ -56,6 +56,7 @@ html {
         justify-content: flex-end;
     }
 }
+
 .online {
     color: var(--online);
 }
@@ -604,5 +605,16 @@ ul {
     100% {
         transform: scale(2);
         opacity: 0;
+    }
+}
+@media screen and (max-width: 440px) {
+    html {
+        font-size: 46%;
+    }
+    .component__content {
+        display: contents;
+    }
+    .online {
+        display: none;
     }
 }

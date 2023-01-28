@@ -16,7 +16,6 @@ function Layout({ children }) {
                     <Daily></Daily>
                 </div>
                 <div className="component__content">
-
                     <Balance></Balance>
                 </div>
             </main>

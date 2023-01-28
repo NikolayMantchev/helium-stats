@@ -1,6 +1,7 @@
 
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useSWR from 'swr'
+import getStaticProps from "../pages/api/endpoints"
 
 const apiUrl = `https://api.helium.io/v1`
 const walletAddress = "14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB"
@@ -12,23 +13,24 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 function Names() {
 	const [hotspots, setHotspots] = useState([]);
-	const [isLoading, setLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const { data, error } = useSWR(`${wallet}`, fetcher, { keepPreviousData: true, refreshInterval: 50000 })
 
-	useMemo(() => {
-		setLoading(true);
+	useEffect(() => {
+		setIsLoading(true);
 		const transformedData = [];
 		for (const key in data) {
 			transformedData.push(data[key]);
 			const myHotspots = transformedData.flat(1)
 			setHotspots(myHotspots)
 		}
-		setLoading(false);
+		setIsLoading(false);
 	}, [data])
 
 	if (isLoading) return <p>Loading Names...</p>
 	if (!hotspots) return <p>No hotspots data</p>
 	if (error) return <p className="error_message">Loading...</p>
+	// console.log(data);
 	return (
 		// <div></div>
 		<div className="content__grid">
