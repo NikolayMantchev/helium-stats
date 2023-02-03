@@ -5,9 +5,9 @@ export async function getStaticProps(address) {
 		const transformedData = [];
 		const myHotspots = []
 		const res = async () => {
-			const body = await fetch(`https://api.helium.io/v1/accounts/${address}/hotspots`, { method: "GET" });
+			const body = await fetch(`https://api.helium.io/v1/hotspots/${address}/rewards/sum?min_time=-1%20day`, { method: "GET" });
 			const hotspots = await body.json();
-			// console.log(JSON.stringify(data), 'back end');
+			// console.log(JSON.stringify(hotspots), 'back end');
 			for (const key in hotspots) {
 				transformedData.push(hotspots[key])
 			}

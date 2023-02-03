@@ -42,20 +42,6 @@ html {
     overflow-y: scroll;
     background: var(--greyLight-1);
 }
-@media screen and (min-width: 900px) {
-    html {
-        font-size: 70%;
-    }
-}
-@media screen and (max-width: 620px) {
-    .navbar {
-        font-size: 65%;
-    }
-    .navbar__content {
-        display: block;
-        justify-content: flex-end;
-    }
-}
 
 .online {
     color: var(--online);
@@ -65,7 +51,7 @@ html {
 }
 .navbar {
     display: flex;
-    height: 6rem;
+    height: 7rem;
     /* min-width: 100vh; */
     background: var(--greyLight-1);
     box-shadow: inset 0.2rem 0.2rem 0.8rem var(--greyLight-1),
@@ -86,7 +72,7 @@ html {
 }
 .container {
     min-height: 90vh;
-    display: flex;
+    display: inline-block;
     justify-content: center;
     align-items: center;
     font-family: "Poppins", sans-serif;
@@ -103,10 +89,14 @@ html {
     display: block;
     /* grid-template-columns: 17.6rem 19rem 20.4rem; */
     /* grid-template-rows: repeat(autofit, min-content); */
-    grid-column-gap: 5rem;
+    /* grid-column-gap: 1rem; */
     grid-row-gap: 2.5rem;
     align-items: center;
     justify-content: center;
+}
+.second_content {
+    display: flex;
+    justify-content: space-between;
 }
 .card {
     /* width: 25rem; */
@@ -411,15 +401,20 @@ html {
     justify-content: center;
     align-items: center;
 }
+.title_end {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
 .title p {
     font-size: 1.5rem;
     margin: 1rem;
 }
 .align-right {
+    display: flex;
     font-size: 1.5rem;
-    padding-left: inherit;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 ul {
     list-style: none;
@@ -607,14 +602,44 @@ ul {
         opacity: 0;
     }
 }
-@media screen and (max-width: 440px) {
+@media screen and (min-width: 1120px) {
     html {
-        font-size: 46%;
-    }
-    .component__content {
-        display: contents;
-    }
-    .online {
-        display: none;
+        font-size: 70%;
     }
 }
+@media screen and (max-width: 900px) {
+    .navbar {
+        font-size: 65%;
+    }
+    .navbar__content {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+/* @media screen and (max-width: 600px) {
+    .container {
+        display: block;
+    }
+    .component__content {
+        display: table-caption;
+    }
+    .navbar__content {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+@media screen and (max-width: 540px) {
+    html {
+        font-size: 56%;
+    }
+    .container {
+        display: block;
+    }
+    .component__content {
+        display: table-caption;
+    }
+} */
+
+/* .online {
+    display: none;
+} */

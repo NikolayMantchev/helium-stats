@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { IoHome } from "react-icons/io5";
+import { IoHome, IoWalletOutline } from "react-icons/io5";
+import { useEffect, useRef, useState } from "react";
 
 function Layout() {
 
@@ -11,16 +12,19 @@ function Layout() {
                 </div>
                 <div className="nav_tile">
                     <div className="navbar__content">
-                        <div className="search">
+                        {/* <div className="search">
                             <input
                                 type="text"
                                 className="search__input"
                                 placeholder="Search..."
+                                ref={inputRef}
+                                // value={}
+                                onChange={(e) => setWallet(e.target.value)}
                             />
                             <div className="search__icon">
                                 <ion-icon name="search"></ion-icon>
                             </div>
-                        </div>
+                        </div> */}
                         <Link href={"login"}>
                             <div className="btn btn__secondary">
 

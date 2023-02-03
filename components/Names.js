@@ -1,22 +1,24 @@
 
-import { useEffect, useMemo, useState } from "react";
+import { IoWalletOutline } from "react-icons/io5"
+import { useEffect, useMemo, useState, useRef } from "react";
 import useSWR from 'swr'
-import getStaticProps from "../pages/api/endpoints"
-
+import { getHotspots } from "./api/endpoints";
 const apiUrl = `https://api.helium.io/v1`
-const walletAddress = "14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB"
+// const walletAddress = "14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB"
 const hotspotsString = `hotspots`
 const account = `accounts`
-const wallet = `${apiUrl}/${account}/${walletAddress}/${hotspotsString}`
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
-
 function Names() {
 	const [hotspots, setHotspots] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
-	const { data, error } = useSWR(`${wallet}`, fetcher, { keepPreviousData: true, refreshInterval: 50000 })
 
-	useEffect(() => {
+	const [isLoading, setIsLoading] = useState(false);
+	const [walletAddress, setWalletAddress] = useState('14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB')
+	const inputRef = useRef()
+	const wallet = `${apiUrl}/${account}/${walletAddress}/${hotspotsString}`
+	const { data, error } = useSWR(`${wallet}`, fetcher, { keepPreviousData: true, refreshInterval: 900000 })
+
+	useState(() => {
 		setIsLoading(true);
 		const transformedData = [];
 		for (const key in data) {
@@ -29,22 +31,39 @@ function Names() {
 
 	if (isLoading) return <p>Loading Names...</p>
 	if (!hotspots) return <p>No hotspots data</p>
-	if (error) return <p className="error_message">Loading...</p>
-	// console.log(data);
-	return (
-		// <div></div>
-		<div className="content__grid">
-			{hotspots.map(hotspot => (
-				<div className="card" key={hotspot.address}>
-					<h2 className="title ">{hotspot.name}</h2>
-					{hotspot.status.online === "online"
-						? <p className="align-right online">{hotspot.status.online} {onclick}</p>
-						: <p className="align-right offline">{hotspot.status.online}</p>}
-					<p className="title align-right ">{hotspot.geocode.short_city}</p>
+	if (error) return <p className="error_message">Loading... </p>
 
+	return (
+		<div className="content__grid">
+			<div className="search">
+				<input
+					type="text"
+					className="search__input"
+					placeholder="Paste Wallet Address"
+					ref={inputRef}
+					onChange={(e) => setWalletAddress(e.target.value)}
+				/>
+				<div className="search__icon">
+					<IoWalletOutline name="search"></IoWalletOutline>
 				</div>
-			))}
-		</div >
+			</div>
+			<div className="content__grid">
+				{hotspots.map(hotspot => (
+					<div className="card align-right" key={hotspot.address}>
+						<div className="align-right">
+							<h2 className="title ">{hotspot.name}</h2>
+						</div>
+						<div className="align-right">
+
+							{hotspot.status?.online === "online"
+								? <p className="align-right online">{hotspot.status?.online}</p>
+								: <p className="align-right offline">{hotspot.status?.online}</p>}
+							{/* <p className="title align-right ">{hotspot.geocode?.short_city}</p> */}
+						</div>
+					</div>
+				))}
+			</div >
+		</div>
 	)
 }
 export default Names
