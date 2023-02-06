@@ -18,9 +18,7 @@ function Names() {
 	const wallet = `https://api.helium.io/v1/accounts/${walletAddress}/hotspots`
 	const { data, error } = useSWR(`${wallet}`, fetcher, { keepPreviousData: false, refreshInterval: 900000 })
 
-	// console.log(data);
-
-	useEffect(() => {
+	useMemo(() => {
 		setIsLoading(true);
 		const transformedData = [];
 		const spots = []

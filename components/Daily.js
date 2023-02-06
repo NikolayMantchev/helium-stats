@@ -81,22 +81,3 @@ function Daily() {
     );
 }
 export default Daily;
-
-// useEffect(() => {
-// 	const resData = []
-// 	for (const key in hotspotData) {
-// 		const element = hotspotData[key]
-// 		if (element.hasOwnProperty('data')) {
-// 			resData.push(element)
-// 			console.log(`${JSON.stringify(element)}				element`);
-// 		}
-// 		setStat(resData)
-// 	}
-// }, [])
-
-// console.log(`${JSON.stringify(stat)}		stat from Daily`);
-// const [isLoading, setIsLoading] = useState(false);
-// console.log(`${JSON.stringify(hotspotData)}				hotspotData`);
-// if (!stat) return <p>No stat data</p>
-// if (!isLoading) return <p>Loading</p>
-// if (isError) return <p>Oh No... ${isError.message}</p>

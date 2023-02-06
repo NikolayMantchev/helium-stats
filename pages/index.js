@@ -4,7 +4,6 @@ import Names from "../components/Names";
 import Daily from "../components/Daily";
 import Balance from "../components/Balance";
 import CurPrice from "../components/CurPrice";
-import Day from "./day";
 
 function Layout({ children }) {
 
@@ -13,9 +12,6 @@ function Layout({ children }) {
             <Navbar />
             <main className="container">
                 {children}
-                <div className="component__content">
-                    <Day></Day>
-                </div>
                 <div className="component__content">
                     <CurPrice></CurPrice>
                     <Balance></Balance>
