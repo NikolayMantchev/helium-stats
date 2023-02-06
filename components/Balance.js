@@ -1,9 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import useSWR from 'swr'
 
-
-
-
 const walletAddress = "14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB"
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
@@ -13,7 +10,7 @@ function Balance() {
 
 	useEffect(() => {
 		if (data) {
-			const tempTotal = data?.data.balance / 100000000
+			const tempTotal = data?.data?.balance / 100000000
 			setTotal(tempTotal.toFixed(3))
 		}
 	}, [data])
