@@ -13,7 +13,6 @@ function Rewards({ spot }) {
     setRewardsData(hotspot)
   }, [data, spot])
 
-  // console.log(`${(JSON.stringify(rewardsData))}				rewardsData2`);
   if (error) return <p className="title">Loading...</p>;
   if (isLoading) return <p className="title">{isLoading ? "Loading Rewards..." : null}</p>
   return (

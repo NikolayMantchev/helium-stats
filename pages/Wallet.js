@@ -1,8 +1,6 @@
 import { useState, useRef, useMemo, useEffect } from "react";
 import { IoWalletOutline } from "react-icons/io5"
 import flatData from "../components/util/helper"
-import Rewards from "../components/Rewards";
-import { getHotspots } from "./api/endpoints";
 import Hotspot from "./Hotspot";
 function Wallet() {
 	const [hotspots, setHotspots] = useState([]);
@@ -27,16 +25,6 @@ function Wallet() {
 		e.preventDefault()
 		setWalletAddress(inputWalletRef.current.value)
 	}
-	useMemo(() => {
-		const tempAdr = []
-		for (const key in hotspots) {
-			const element = hotspots[key]
-			if (element.hasOwnProperty('address')) {
-				tempAdr.push(element.address)
-			}
-			setSpotAddress(tempAdr)
-		}
-	}, [hotspots]);
 
 	if (isLoading) return <p>Loading Names...</p>
 	if (!hotspots) return <p>No hotspots data</p>
@@ -56,7 +44,7 @@ function Wallet() {
 					</div>
 				</div>
 				<div className="btn btn__secondary" onClick={submitWalletHandler}>
-					Find
+					Get Hotspots
 				</div>
 			</div>
 			<div className="content__grid">
@@ -64,12 +52,6 @@ function Wallet() {
 					<Hotspot {...{ hotspot }} key={hotspot.address}></Hotspot>
 				))}
 			</div >
-
-			{/* <div className="content__grid">
-				{spotAddress.map(spot => (
-					<Rewards {...{ spot }} key={spot}></Rewards>
-				))}
-			</div> */}
 		</div>
 	)
 }

@@ -210,8 +210,8 @@ html {
 
 /* BUTTONS */
 .btn {
-    width: 10rem;
-    height: 3.5rem;
+    width: 12rem;
+    height: 3.2rem;
     margin: 10px;
     border-radius: 1rem;
     box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),

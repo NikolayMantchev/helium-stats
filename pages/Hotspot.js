@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import Rewards from "../components/Rewards";
 
 function Hotspot({ hotspot }) {
