@@ -1,9 +1,8 @@
 
 import Navbar from "../components/Navbar";
-import Names from "../components/Names";
-import Daily from "../components/Daily";
 import Balance from "../components/Balance";
 import CurPrice from "../components/CurPrice";
+import Wallet from "./Wallet";
 
 function Layout({ children }) {
 
@@ -17,10 +16,7 @@ function Layout({ children }) {
                     <Balance></Balance>
                 </div>
                 <div className="component__content second_content">
-                    <Names>
-
-                    </Names>
-                    <Daily></Daily>
+                    <Wallet></Wallet>
                 </div>
             </main>
             {/* <Footer /> */}
