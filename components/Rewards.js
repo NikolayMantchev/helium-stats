@@ -13,12 +13,12 @@ function Rewards({ spot }) {
     setRewardsData(hotspot)
   }, [data, spot])
 
-  console.log(`${(JSON.stringify(rewardsData))}				rewardsData2`);
-  if (error) return <p className="title">Failed to load...</p>;
+  // console.log(`${(JSON.stringify(rewardsData))}				rewardsData2`);
+  if (error) return <p className="title">Loading...</p>;
   if (isLoading) return <p className="title">{isLoading ? "Loading Rewards..." : null}</p>
   return (
     <>
-      <div className="card" key={rewardsData.id}>
+      <div className="" key={rewardsData.id}>
         <h2 className="title">{rewardsData?.total?.toFixed(4)}</h2>
       </div>
     </>

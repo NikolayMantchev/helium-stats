@@ -35,18 +35,20 @@ const hotspotAddresses = Array.from(hotspotAddressesString)
 const getHotspots = (walletAddress) => {
 	const transformedData = [];
 	const myHotspots = []
-	const res = async () => {
-		const body = await fetch(`https://api.helium.io/v1/accounts/${walletAddress}/hotspots`, { method: "GET" });
-		const data = await body.json()
-		for (const key in data) {
-			transformedData.push(data[key])
-		}
-		myHotspots = transformedData.flat(1)
-
-		return myHotspots
-	};
-	// console.log(`${res}    			res`);
-	return res
+	try {
+		const res = async () => {
+			const body = await fetch(`https://api.helium.io/v1/accounts/${walletAddress}/hotspots`, { method: "GET" });
+			const data = await body.json()
+			for (const key in data) {
+				transformedData.push(data[key])
+			}
+			myHotspots = transformedData.flat(1)
+			return myHotspots
+		};
+		return res
+	} catch (error) {
+		console.error(error.message)
+	}
 }
 async function getDaily(address) {
 	try {
