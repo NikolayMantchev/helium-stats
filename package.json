@@ -13,6 +13,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-icons": "^4.4.0",
+    "react-spinners": "^0.13.8",
     "swr": "^2.0.0"
   },
   "devDependencies": {
@@ -27,7 +28,8 @@
     "url": "git+https://github.com/NikolayMantchev/helium-stats.git"
   },
   "keywords": [
-    "helium", "HNT"
+    "helium",
+    "HNT"
   ],
   "author": "N.Mantchev",
   "license": "MIT",
