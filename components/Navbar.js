@@ -26,14 +26,14 @@ function Navbar() {
                                 <ion-icon name="search"></ion-icon>
                             </div>
                         </div> */}
-							<Link href={"login"}>
+							{/* <Link href={"login"}>
 								<div className="btn btn__secondary">Login</div>
 							</Link>
 							<Link href={"register"}>
 								<div className="btn btn__secondary">
 									Register
 								</div>
-							</Link>
+							</Link> */}
 						</div>
 					</div>
 				</div>

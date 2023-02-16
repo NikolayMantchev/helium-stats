@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import Rewards from "./Rewards";
 
@@ -6,8 +7,12 @@ function Hotspot({ hotspot }) {
 	if (!spot) return;
 	return (
 		<div className="card align-right" key={hotspot.address}>
-			<div className="align-right">
-				<h2 className="title ">{hotspot.name}</h2>
+			<div>
+				<Link href={hotspot.address} {...{ hotspot }}>
+					{/* <div className="align-right a"> */}
+					<a className="align-right title">{hotspot.name}</a>
+					{/* </div> */}
+				</Link>
 			</div>
 			<div className="align-right">
 				{hotspot.status?.online === "online" ? (
