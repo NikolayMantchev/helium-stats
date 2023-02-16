@@ -2,7 +2,6 @@ import Navbar from "../components/Navbar";
 
 import CurPrice from "../components/CurPrice";
 import Dashboard from "../components/hotspots/Dashboard";
-import LastDay from "../components/LastDay";
 
 function Layout({ children }) {
 	return (
@@ -19,11 +18,6 @@ function Layout({ children }) {
 							<Dashboard></Dashboard>
 						</div>
 					</div>
-					{/* <div className="wrapper">
-						<div>
-							<LastDay></LastDay>
-						</div>
-					</div> */}
 				</div>
 			</main>
 			{/* <Footer /> */}

@@ -23,7 +23,7 @@ function Balance({ walletAddress }) {
 		// <div className="content__grid">
 		<div className="card_box blue-1">
 			<div className="align-right">
-				<h2 className="title p"> Balance </h2>
+				<p className="title p"> Balance </p>
 				<h2 className="title-h ">{total ? total : 0}</h2>
 				<p className="title p">HNT</p>
 			</div>

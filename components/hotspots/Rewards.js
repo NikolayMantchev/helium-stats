@@ -40,27 +40,28 @@ function Rewards({ spot }) {
 
 	return (
 		<div className="align-c">
-			<div className="title">
-				<select
-					className="drop__down"
-					value={timeRange}
-					onChange={handleChange}>
-					<option className="option" value={oneDay}>
-						Last 24h
-					</option>
-					<option value={sevenDays}>7 Days</option>
-					<option value={thirtyDays}>30 Days</option>
-					<option value={treeMonths}>3 Months</option>
-					<option value={sixMonths}>6 Months</option>
-					<option value={oneYear}>1 Year</option>
-				</select>
+			<div className="title_start">
+				<div className="title">
+					<select
+						className="drop__down"
+						value={timeRange}
+						onChange={handleChange}>
+						<option className="option" value={oneDay}>
+							Last 24h
+						</option>
+						<option value={sevenDays}>7 Days</option>
+						<option value={thirtyDays}>30 Days</option>
+						<option value={treeMonths}>3 Months</option>
+						<option value={sixMonths}>6 Months</option>
+						<option value={oneYear}>1 Year</option>
+					</select>
+				</div>
 			</div>
 			<div className="align-right" key={rewardsData.id}>
 				{!rewardsData.total ? (
 					<BarLoader color="#36d7b7" width={40} />
 				) : (
 					<h1 className="title">{rewardsData?.total?.toFixed(4)}</h1>
-					// <h1 className="title">0</h1>
 				)}
 			</div>
 		</div>

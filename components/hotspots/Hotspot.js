@@ -7,28 +7,33 @@ function Hotspot({ hotspot }) {
 	if (!spot) return;
 	return (
 		<div className="card align-right" key={hotspot.address}>
-			<div>
+			<div className="title_a">
 				<Link href={hotspot.address} {...{ hotspot }}>
 					{/* <div className="align-right a"> */}
 					<a className="align-right title">{hotspot.name}</a>
 					{/* </div> */}
 				</Link>
 			</div>
-			<div className="align-right">
-				{hotspot.status?.online === "online" ? (
-					<p className="align-right online">
-						{hotspot.status?.online}
-					</p>
-				) : (
-					<p className="align-right offline">
-						{hotspot.status?.online}
-					</p>
-				)}
+
+			<div className="title_d">
+				<div className="second_content">
+					{hotspot.status?.online === "online" ? (
+						<p className="align-right online">
+							{hotspot.status?.online}
+						</p>
+					) : (
+						<p className="align-right offline">
+							{hotspot.status?.online}
+						</p>
+					)}
+				</div>
 			</div>
-			<div className="align-right">
-				<p className="title align-right">
-					{hotspot.geocode?.short_city}
-				</p>
+			<div className="title_b">
+				<div className="align-right">
+					<p className="title align-right">
+						{hotspot.geocode?.short_city}
+					</p>
+				</div>
 			</div>
 			<div className="align-c">
 				<Rewards {...{ spot }}></Rewards>

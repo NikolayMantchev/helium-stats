@@ -1,9 +1,9 @@
 import { useState, useRef, useMemo, useEffect, useCallback } from "react";
 import { IoWalletOutline } from "react-icons/io5";
 import Balance from "./Balance";
-import LastDay from "../LastDay";
-import flatData from "../util/helper";
+import DailyWeeklyMonthly from "./DailyWeeklyMonthly";
 import Hotspot from "./Hotspot";
+import flatData from "../util/helper";
 
 function Dashboard(props) {
 	const [hotspots, setHotspots] = useState([]);
@@ -17,20 +17,16 @@ function Dashboard(props) {
 
 	useEffect(() => {
 		setIsLoading(true);
-		// let isSubscribed = true;
 		const fetchData = async () => {
 			const data = await fetch(
 				`https://api.helium.io/v1/accounts/${walletAddress}/hotspots`
 			);
 			const json = await data.json();
 			const transformedData = flatData(json);
-			// if (isSubscribed) {
 			setHotspots(transformedData);
-			// }
 		};
 		fetchData().catch(console.error);
 		setIsLoading(false);
-		// return () => (isSubscribed = false);
 	}, [walletAddress]);
 
 	async function submitWalletHandler(e) {
@@ -43,6 +39,7 @@ function Dashboard(props) {
 		inputWalletRef.current.value = "";
 	}
 	// console.log(`${JSON.stringify(hotspots)}   hotspots`);
+
 	if (isLoading) return <p>Loading Names...</p>;
 	if (!hotspots) return <p>No hotspots data</p>;
 	return (
@@ -71,7 +68,7 @@ function Dashboard(props) {
 				<Balance {...{ walletAddress }}></Balance>
 			</div>
 			<div className="second_content">
-				<LastDay {...{ walletAddress }}></LastDay>
+				<DailyWeeklyMonthly {...{ walletAddress }}></DailyWeeklyMonthly>
 			</div>
 
 			<div className="content__grid">
