@@ -9,7 +9,7 @@ function Layout({ children }) {
 			{/* <Navbar /> */}
 			<main className="container ">
 				<div className="wrapper">
-					<div className="">
+					<div>
 						{children}
 						<div className="component__content">
 							<CurPrice></CurPrice>

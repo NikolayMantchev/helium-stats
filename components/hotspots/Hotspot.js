@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import Rewards from "./Rewards";
+import { IoRadio } from "react-icons/io5";
 
 function Hotspot({ hotspot }) {
 	const [spot, setSpot] = useState(hotspot.address);
@@ -8,31 +9,33 @@ function Hotspot({ hotspot }) {
 	return (
 		<div className="card align-right" key={hotspot.address}>
 			<div className="title_a">
-				<Link href={hotspot.address} {...{ hotspot }}>
-					{/* <div className="align-right a"> */}
-					<a className="align-right title">{hotspot.name}</a>
-					{/* </div> */}
-				</Link>
+				{/* <Link href={hotspot.address} {...{ hotspot }}> */}
+				<h2 className="align-right title">{hotspot.name}</h2>
+				{/* </Link> */}
 			</div>
-
 			<div className="title_d">
 				<div className="second_content">
 					{hotspot.status?.online === "online" ? (
-						<p className="align-right online">
-							{hotspot.status?.online}
-						</p>
+						<div className="align-right online">
+							<IoRadio></IoRadio>
+						</div>
 					) : (
-						<p className="align-right offline">
-							{hotspot.status?.online}
-						</p>
+						// <p className="align-right online">
+						// 	{hotspot.status?.online}
+						// </p>
+						<div className="align-right offline">
+							<IoRadio></IoRadio>
+						</div>
+						// <p className="align-right offline">
+						// 	{hotspot.status?.online}
+						// </p>
 					)}
 				</div>
 			</div>
+
 			<div className="title_b">
 				<div className="align-right">
-					<p className="title align-right">
-						{hotspot.geocode?.short_city}
-					</p>
+					<p className="title_town">{hotspot.geocode?.short_city}</p>
 				</div>
 			</div>
 			<div className="align-c">

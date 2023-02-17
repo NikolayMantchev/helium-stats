@@ -59,7 +59,7 @@ function Rewards({ spot }) {
 			</div>
 			<div className="align-right" key={rewardsData.id}>
 				{!rewardsData.total ? (
-					<BarLoader color="#36d7b7" width={40} />
+					<BarLoader color="#36d7b7" width={60} />
 				) : (
 					<h1 className="title">{rewardsData?.total?.toFixed(4)}</h1>
 				)}
