@@ -1,7 +1,7 @@
 This App show statisticks for Hotspots on Helium Wallet Address
 ## Deployed on Vercel (https://helium-stats.vercel.app)
 
-![Screenshot 2023-02-19 at 10 34 43](https://user-images.githubusercontent.com/62190441/219940225-3934e7a4-db4b-47ca-83db-cd40fbe83adc.png)
+![Screenshot 2023-02-19 at 12 01 57](https://user-images.githubusercontent.com/62190441/219943882-20407a15-ad9a-4bb7-98bf-af21e4e276b2.png)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
