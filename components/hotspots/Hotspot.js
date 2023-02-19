@@ -9,9 +9,11 @@ function Hotspot({ hotspot }) {
 	return (
 		<div className="card align-right" key={hotspot.address}>
 			<div className="title_a">
-				{/* <Link href={hotspot.address} {...{ hotspot }}> */}
-				<h2 className="align-right title">{hotspot.name}</h2>
-				{/* </Link> */}
+				<Link
+					href={`https://explorer.helium.com/hotspots/${hotspot.address}`}
+					{...{ hotspot }}>
+					<a className="align-right title">{hotspot.name}</a>
+				</Link>
 			</div>
 			<div className="title_d">
 				<div className="second_content">
