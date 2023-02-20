@@ -18,7 +18,7 @@ function Balance({ walletAddress }) {
 		}
 	}, [data]);
 	if (isLoading) return isLoading ? <BarLoader color="#6d5dfc" /> : null;
-	// if (error) return <p className="error_message">Error Loading Data...</p>
+	// if (error) return <p className="error_message"> Loading Data...</p>;
 	return (
 		// <div className="content__grid">
 		<div className="card_box blue-1">

@@ -12,8 +12,6 @@ function Dashboard(props) {
 	);
 	const [isLoading, setIsLoading] = useState(false);
 	const inputWalletRef = useRef();
-	// const { data, error, isLoading } = getHotspots(walletAddress);
-	// console.log(`${JSON.stringify(data)}   data`);
 
 	useEffect(() => {
 		setIsLoading(true);

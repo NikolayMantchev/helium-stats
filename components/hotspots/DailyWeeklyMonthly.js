@@ -34,7 +34,7 @@ function LastDay({ walletAddress }) {
 			const lMonth = lastMonthData(data);
 			setLastMonth(lMonth.toFixed(2));
 		}
-	}, [data]);
+	}, [data, geco]);
 
 	return (
 		<div className="second_content">
@@ -47,7 +47,9 @@ function LastDay({ walletAddress }) {
 					<p className="title-g">HNT</p>
 				</div>
 				<div className="title h">
-					<p> {(lastDay * curPriceEur).toFixed(2)} €</p>
+					{lastDay && curPriceEur ? (
+						<p> {(lastDay * curPriceEur).toFixed(2)} €</p>
+					) : null}
 				</div>
 			</div>
 			<div className="card_box yellow-2">
@@ -59,7 +61,9 @@ function LastDay({ walletAddress }) {
 					<p className="title-g">HNT</p>
 				</div>
 				<div className="title h">
-					<p> {(lastWeek * curPriceEur).toFixed(2)} €</p>
+					{lastWeek && curPriceEur ? (
+						<p> {(lastWeek * curPriceEur).toFixed(2)} €</p>
+					) : null}
 				</div>
 			</div>
 			<div className="card_box yellow-3">
@@ -71,7 +75,9 @@ function LastDay({ walletAddress }) {
 					<p className="title-g">HNT</p>
 				</div>
 				<div className="title h">
-					<p> {(lastMonth * curPriceEur).toFixed(2)} €</p>
+					{lastMonth && curPriceEur ? (
+						<p> {(lastMonth * curPriceEur).toFixed(2)} €</p>
+					) : null}
 				</div>
 			</div>
 		</div>
