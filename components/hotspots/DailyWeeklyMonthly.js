@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { BarLoader } from "react-spinners";
 import useSWR from "swr";
 import lastDayData from "../util/lastDayData";
 import lastWeekData from "../util/lastWeekData";
@@ -44,8 +45,8 @@ function LastDay({ walletAddress }) {
 		}
 	}, [data, geco]);
 
-	console.log(JSON.stringify(geco));
-	if (isLoadingGeco) return <p>Loading...</p>;
+	if (isLoadingGeco)
+		return isLoadingGeco ? <BarLoader color="#6d5dfc" /> : null;
 	return (
 		<div className="second_content">
 			<div className="card_box yellow-1">

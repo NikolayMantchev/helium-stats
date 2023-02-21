@@ -15,7 +15,7 @@ function Dashboard(props) {
 
 	useEffect(() => {
 		setIsLoading(true);
-		const fetchData = async () => {
+		const fetchWalletData = async () => {
 			const data = await fetch(
 				`https://api.helium.io/v1/accounts/${walletAddress}/hotspots`
 			);
@@ -23,7 +23,7 @@ function Dashboard(props) {
 			const transformedData = flatData(json);
 			setHotspots(transformedData);
 		};
-		fetchData().catch(console.error);
+		fetchWalletData().catch(console.error);
 		setIsLoading(false);
 	}, [walletAddress]);
 
