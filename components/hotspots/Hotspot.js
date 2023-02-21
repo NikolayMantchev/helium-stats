@@ -12,7 +12,9 @@ function Hotspot({ hotspot }) {
 				<Link
 					href={`https://explorer.helium.com/hotspots/${hotspot.address}`}
 					{...{ hotspot }}>
-					<a className="align-right title">{hotspot.name}</a>
+					<a className="align-right title" target={"_blank"}>
+						{hotspot.name}
+					</a>
 				</Link>
 			</div>
 			<div className="title_d">
