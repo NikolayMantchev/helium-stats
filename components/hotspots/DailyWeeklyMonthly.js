@@ -3,29 +3,37 @@ import useSWR from "swr";
 import lastDayData from "../util/lastDayData";
 import lastWeekData from "../util/lastWeekData";
 import lastMonthData from "../util/lastMonthData";
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 function LastDay({ walletAddress }) {
 	const [lastDay, setLastDay] = useState();
 	const [lastWeek, setLastWeek] = useState();
 	const [lastMonth, setLastMonth] = useState();
+	const [gecoApi, setGecoApi] = useState(
+		`https://api.coingecko.com/api/v3/coins/helium?community_data=false&developer_data=false&sparkline=true`
+	);
+
 	const [geco, setGeco] = useState();
 	const [curPriceEur, setCurPriceEur] = useState(0);
+	const [isLoadingGeco, setIsLoadingGeco] = useState(false);
 	const { data, error, isLoading } = useSWR(
 		`https://api.helium.io/v1/accounts/${walletAddress}/stats`,
 		fetcher,
 		{ refreshInterval: 300000 }
 	);
-	useMemo(() => {
-		const fetchData = async () => {
-			const res = await fetch(
-				`https://api.coingecko.com/api/v3/coins/helium?community_data=false&developer_data=false&sparkline=true`
-			);
+	useEffect(() => {
+		setIsLoadingGeco(true);
+		const fetchGeco = async () => {
+			const res = await fetch(gecoApi);
 			const json = await res.json();
 			setGeco(json);
 		};
-		fetchData().catch(console.error);
-
-		setCurPriceEur(geco?.market_data.current_price.eur);
+		fetchGeco().catch(console.error);
+		setIsLoadingGeco(false);
+	}, [gecoApi]);
+	useMemo(() => {
+		setCurPriceEur(geco?.market_data?.current_price?.eur);
 		if (data) {
 			const lDay = lastDayData(data);
 			setLastDay(lDay.toFixed(2));
@@ -36,6 +44,8 @@ function LastDay({ walletAddress }) {
 		}
 	}, [data, geco]);
 
+	console.log(JSON.stringify(geco));
+	if (isLoadingGeco) return <p>Loading...</p>;
 	return (
 		<div className="second_content">
 			<div className="card_box yellow-1">

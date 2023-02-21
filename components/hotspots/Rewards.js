@@ -17,7 +17,12 @@ function Rewards({ spot }) {
 	const { data, error, isLoading } = useSWR(
 		`https://api.helium.io/v1/hotspots/${spot}/rewards/${timeRange}`,
 		fetcher,
-		{ refreshInterval: 300000 }
+		{
+			refreshInterval: 300000, // 5 min.
+			revalidateIfStale: false,
+			revalidateOnFocus: false,
+			revalidateOnReconnect: false,
+		}
 	);
 	useMemo(() => {
 		const hotspot = { total: data?.data?.total, id: spot };
