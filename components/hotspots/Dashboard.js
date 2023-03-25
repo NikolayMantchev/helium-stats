@@ -5,7 +5,7 @@ import DailyWeeklyMonthly from "./DailyWeeklyMonthly";
 import Hotspot from "./Hotspot";
 import flatData from "../util/helper";
 
-function Dashboard(props) {
+function Dashboard() {
 	const [hotspots, setHotspots] = useState([]);
 	const [walletAddress, setWalletAddress] = useState(
 		`14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB`

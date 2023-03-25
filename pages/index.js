@@ -11,12 +11,12 @@ function Layout({ children }) {
 				<div className="wrapper">
 					<div>
 						{children}
-						<div className="component__content">
-							<TradingViewWidget></TradingViewWidget>
-						</div>
 						{/* <div className="component__content">
-							<CurPrice></CurPrice>
+							<TradingViewWidget></TradingViewWidget>
 						</div> */}
+						<div className="component__content">
+							<CurPrice></CurPrice>
+						</div>
 						<div className="component__content second_content">
 							<Dashboard></Dashboard>
 						</div>

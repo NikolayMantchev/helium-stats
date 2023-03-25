@@ -7,7 +7,7 @@ import lastMonthData from "../util/lastMonthData";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-function LastDay({ walletAddress }) {
+function DailyWeeklyMonthly({ walletAddress }) {
 	const [lastDay, setLastDay] = useState();
 	const [lastWeek, setLastWeek] = useState();
 	const [lastMonth, setLastMonth] = useState();
@@ -94,4 +94,4 @@ function LastDay({ walletAddress }) {
 		</div>
 	);
 }
-export default LastDay;
+export default DailyWeeklyMonthly;
