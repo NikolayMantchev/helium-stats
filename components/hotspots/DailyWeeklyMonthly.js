@@ -19,7 +19,7 @@ function DailyWeeklyMonthly({ walletAddress }) {
 	const [curPriceEur, setCurPriceEur] = useState(0);
 	const [isLoadingGeco, setIsLoadingGeco] = useState(false);
 	const { data, error, isLoading } = useSWR(
-		`https://api.helium.io/v1/accounts/${walletAddress}/stats`,
+		`https://entities.nft.helium.io/v2/wallet/${walletAddress}`,
 		fetcher,
 		{ refreshInterval: 300000 }
 	);

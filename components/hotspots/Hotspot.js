@@ -4,13 +4,13 @@ import Rewards from "./Rewards";
 import { IoRadio } from "react-icons/io5";
 
 function Hotspot({ hotspot }) {
-	const [spot, setSpot] = useState(hotspot.address);
+	const [spot, setSpot] = useState(hotspot.name);
 	if (!spot) return;
 	return (
-		<div className="card align-right" key={hotspot.address}>
+		<div className="card align-right" key={hotspot.name}>
 			<div className="title_a">
 				<Link
-					href={`https://explorer.helium.com/hotspots/${hotspot.address}`}
+					href={`entities.nft.helium.io/v2/wallet/${hotspot.name}`}
 					{...{ hotspot }}>
 					<a className="align-right title" target={"_blank"}>
 						{hotspot.name}

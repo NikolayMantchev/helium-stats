@@ -4,13 +4,15 @@ const getHotspots = (walletAddress) => {
 	try {
 		const res = async () => {
 			const body = await fetch(
-				`https://api.helium.io/v1/accounts/${walletAddress}/hotspots`,
+				`https://entities.nft.helium.io/v2/wallet/${walletAddress}`,
 				{ method: "GET" }
 			);
 			const data = await body.json();
 			const myHotspots = flatData(data);
 			return myHotspots;
 		};
+		// console.log(data);
+		// console.log(myHotspots);
 		return res;
 	} catch (error) {
 		console.error(error.message);

@@ -8,7 +8,7 @@ import flatData from "../util/helper";
 function Dashboard() {
 	const [hotspots, setHotspots] = useState([]);
 	const [walletAddress, setWalletAddress] = useState(
-		`14QP8tUjm5FogNjdTcyBn8v9jJhs4ZMk5B3wVD3YxeHaSgqQhTB`
+		`DwBrEeuBNRynee89kCB7ogR6TntMKYEwHoY2cDHnn2PX`
 	);
 	const [isLoading, setIsLoading] = useState(false);
 	const inputWalletRef = useRef();
@@ -17,12 +17,13 @@ function Dashboard() {
 		setIsLoading(true);
 		const fetchWalletData = async () => {
 			const data = await fetch(
-				`https://api.helium.io/v1/accounts/${walletAddress}/hotspots`
+				`https://entities.nft.helium.io/v2/wallet/${walletAddress}`
 			);
 			const json = await data.json();
 			const transformedData = flatData(json);
 			setHotspots(transformedData);
 		};
+		// console.log(`${json}from Dachboard`);
 		fetchWalletData().catch(console.error);
 		setIsLoading(false);
 	}, [walletAddress]);
@@ -71,7 +72,7 @@ function Dashboard() {
 
 			<div className="content__grid">
 				{hotspots.map((hotspot) => (
-					<Hotspot {...{ hotspot }} key={hotspot.address}></Hotspot>
+					<Hotspot {...{ hotspot }} key={hotspot.name}></Hotspot>
 				))}
 			</div>
 		</div>

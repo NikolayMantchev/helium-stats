@@ -15,6 +15,7 @@ function Rewards({ spot }) {
 	const [timeRange, setTimeRange] = useState(oneDay);
 	const [rewards, setRewards] = useState(0);
 	const { data, error, isLoading } = useSWR(
+		//`https://entities.nft.helium.io/v2/wallet/${spot}`
 		`https://api.helium.io/v1/hotspots/${spot}/rewards/${timeRange}`,
 		fetcher,
 		{
@@ -29,6 +30,7 @@ function Rewards({ spot }) {
 		setRewardsData(hotspot);
 		setRewards(hotspot.total);
 	}, [data, spot]);
+	//console.log(spot);
 
 	const handleChange = (event) => {
 		setTimeRange(event.target.value);

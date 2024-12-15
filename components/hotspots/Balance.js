@@ -6,15 +6,16 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 function Balance({ walletAddress }) {
 	const [total, setTotal] = useState();
 	const { data, error, isLoading } = useSWR(
-		`https://api.helium.io/v1/accounts/${walletAddress}`,
+		`https://entities.nft.helium.io/v2/wallet/${walletAddress}`,
 		fetcher,
 		{ refreshInterval: 300000 }
 	);
-
+	//console.log(data);
 	useEffect(() => {
 		if (data) {
-			const tempTotal = data?.data?.balance / 100000000;
+			const tempTotal = data?.balances[0].balance / 100000000;
 			setTotal(tempTotal.toFixed(2));
+			console.log(data.balances[0].balance);
 		}
 	}, [data]);
 	if (isLoading) return isLoading ? <BarLoader color="#6d5dfc" /> : null;
